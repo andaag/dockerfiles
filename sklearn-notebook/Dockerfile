@@ -15,6 +15,7 @@ RUN apt-get -y install libzmq3-dev libzmq3 git-core
 RUN pip install --upgrade ipython[all]
 RUN pip install bottleneck
 RUN pip install seaborn
+RUN pip install --upgrade git+git://github.com/scikit-learn/scikit-learn.git@0.15.X
 RUN chmod 755 /ml
 
 #Minimize image size
