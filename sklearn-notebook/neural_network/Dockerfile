@@ -10,12 +10,14 @@ RUN apt-get upgrade -y
 
 RUN mkdir /ml
 RUN locale-gen en_US en_US.UTF-8
-RUN apt-get -y install python-scikits-learn python-pandas cython python-pip python-mechanize python-matplotlib python-numexpr
+RUN apt-get -y install python-zmq python-scikits-learn python-pandas cython python-pip python-mechanize python-matplotlib python-numexpr
 RUN apt-get -y install libzmq3-dev libzmq3 git-core
 RUN pip install --upgrade ipython[all]
 RUN pip install bottleneck
 RUN pip install seaborn
 RUN pip install --upgrade git+git://github.com/IssamLaradji/scikit-learn.git@generic-multi-layer-perceptron
+#make sure we use the same zmq version as the system provides
+RUN rm -rf /usr/local/lib/python*/dist-packages/zmq
 RUN chmod 755 /ml
 
 #Minimize image size
