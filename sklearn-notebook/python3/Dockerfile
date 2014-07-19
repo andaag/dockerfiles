@@ -29,4 +29,4 @@ RUN (apt-get remove -y --purge libzmq-dev python-dev libc-dev libzmq3-dev git-co
 WORKDIR /ml
 
 EXPOSE 8888
-CMD ipython notebook --no-browser --ip=$(hostname -i) --port 8888
+CMD ipython notebook --no-browser --script --ip=$(hostname -i) --port 8888

@@ -28,4 +28,4 @@ RUN apt-get remove -y python-scikits-learn python-sklearn python-sklearn-lib
 WORKDIR /ml
 
 EXPOSE 8888
-CMD ipython notebook --no-browser --ip=$(hostname -i) --port 8888
+CMD ipython notebook --no-browser --script --ip=$(hostname -i) --port 8888
