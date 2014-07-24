@@ -30,6 +30,8 @@ RUN (apt-get remove -y --purge libzmq-dev python-dev libc-dev libzmq3-dev git-co
 
 WORKDIR /ml
 
+ADD ./ipython_notebook_config.py /root/.ipython/profile_default/ipython_notebook_config.py
+
 EXPOSE 8888
 CMD ipython notebook --no-browser --script --ip=$(hostname -i) --port 8888
 
