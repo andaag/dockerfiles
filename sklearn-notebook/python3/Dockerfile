@@ -18,7 +18,6 @@ RUN pip3 install mechanize
 RUN pip3 install bottleneck
 RUN pip3 install seaborn
 RUN pip3 install --upgrade git+git://github.com/scikit-learn/scikit-learn.git@0.15.X
-RUN pip3 install python-ipdb
 #make sure we use the same zmq version as the system provides
 RUN rm -rf /usr/local/lib/python*/dist-packages/zmq
 RUN chmod 755 /ml
