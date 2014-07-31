@@ -4,7 +4,7 @@
 # docker run -v $(pwd)/ml:/ml -t andaag/sklearn-notebook
 
 FROM ubuntu:14.04
-RUN sed 's:/archive\.:/se.archive.:g' /etc/apt/sources.list -i
+RUN sed 's:/archive\.:/no.archive.:g' /etc/apt/sources.list -i
 RUN apt-get update
 RUN apt-get upgrade -y
 
@@ -27,8 +27,6 @@ RUN (apt-get remove -y --purge libzmq-dev python-dev libc-dev libzmq3-dev git-co
      apt-get clean -y)
 
 WORKDIR /ml
-
-ADD ./ipython_notebook_config.py /root/.ipython/profile_default/ipython_notebook_config.py
 
 EXPOSE 8888
 CMD ipython notebook --no-browser --script --ip=$(hostname -i) --port 8888
