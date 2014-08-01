@@ -20,6 +20,9 @@ RUN pip install --upgrade git+git://github.com/scikit-learn/scikit-learn.git@0.1
 RUN rm -rf /usr/local/lib/python*/dist-packages/zmq
 RUN chmod 755 /ml
 
+ADD scikit.patch /tmp/scikit.patch
+RUN patch -p0 < /tmp/scikit.patch
+
 #Minimize image size
 RUN (apt-get remove -y --purge libzmq-dev python-dev libc-dev libzmq3-dev git-core; \
      apt-get remove -y --purge gcc cpp binutils build-essential; \
