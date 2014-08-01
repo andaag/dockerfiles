@@ -1,5 +1,5 @@
---- /usr/local/lib/python3.4/dist-packages/sklearn/utils/testing.py	2014-08-01 07:24:18.879899483 +0000
-+++ /usr/local/lib/python3.4/dist-packages/sklearn/utils/testing.py	2014-08-01 07:25:26.215900750 +0000
+--- /usr/local/lib/python2.7/dist-packages/sklearn/utils/testing.py	2014-08-01 07:24:18.879899483 +0000
++++ /usr/local/lib/python2.7/dist-packages/sklearn/utils/testing.py	2014-08-01 07:25:26.215900750 +0000
 @@ -580,7 +580,9 @@
      """Safe way to reset warnings """
      warnings.resetwarnings()
