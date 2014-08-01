@@ -23,9 +23,9 @@ RUN pip3 install --upgrade git+git://github.com/scikit-learn/scikit-learn.git@0.
 ADD scikit.patch /tmp/scikit.patch
 RUN patch -p0 < /tmp/scikit.patch
 
-#make sure we use the same zmq version as the system provides
-#RUN rm -rf /usr/local/lib/python*/dist-packages/zmq
-#RUN chmod 755 /ml
+make sure we use the same zmq version as the system provides
+RUN rm -rf /usr/local/lib/python*/dist-packages/zmq
+RUN chmod 755 /ml
 
 WORKDIR /ml
 
