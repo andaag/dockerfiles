@@ -23,6 +23,7 @@ RUN pip3 install --upgrade git+git://github.com/scikit-learn/scikit-learn.git@0.
 RUN pip3 install seaborn
 RUN pip3 install pyyaml
 RUN pip3 install http://www.nltk.org/nltk3-alpha/nltk-3.0a4.tar.gz#egg=nlt
+RUN python3 -m nltk.downloader all
 
 
 ADD scikit.patch /tmp/scikit.patch
