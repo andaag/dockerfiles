@@ -4,13 +4,12 @@
 # docker run -v $(pwd)/ml:/ml -t andaag/sklearn-notebook3
 
 FROM ubuntu:14.04
-RUN sed 's:/archive\.:/se.archive.:g' /etc/apt/sources.list -i
 RUN apt-get update
 RUN apt-get upgrade -y
 
 RUN mkdir /ml
 RUN locale-gen en_US en_US.UTF-8
-RUN apt-get -y install  libopenblas-base libopenblas-dev liblapack-dev gfortran && apt-get clean -y
+RUN apt-get -y install  libopenblas-base libopenblas-dev liblapack-dev gfortran wget libyaml-dev && apt-get clean -y
 RUN apt-get -y install python3-zmq python3-pandas python3-pip cython3 python3-matplotlib && apt-get clean -y
 RUN apt-get -y install libzmq3-dev libzmq3 git-core && apt-get clean -y
 RUN pip3 install --upgrade ipython[all]
@@ -22,6 +21,9 @@ RUN pip3 install --upgrade scipy
 RUN pip3 install --upgrade pandas
 RUN pip3 install --upgrade git+git://github.com/scikit-learn/scikit-learn.git@0.15.X
 RUN pip3 install seaborn
+RUN pip3 install pyyaml
+RUN pip3 install http://www.nltk.org/nltk3-alpha/nltk-3.0a4.tar.gz#egg=nlt
+
 
 ADD scikit.patch /tmp/scikit.patch
 RUN patch -p0 < /tmp/scikit.patch
