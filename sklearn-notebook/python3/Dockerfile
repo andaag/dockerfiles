@@ -25,10 +25,6 @@ RUN pip3 install pyyaml
 RUN pip3 install http://www.nltk.org/nltk3-alpha/nltk-3.0a4.tar.gz#egg=nlt
 RUN python3 -m nltk.downloader all
 
-
-ADD scikit.patch /tmp/scikit.patch
-RUN patch -p0 < /tmp/scikit.patch
-
 #make sure we use the same zmq version as the system provides
 RUN rm -rf /usr/local/lib/python*/dist-packages/zmq
 RUN chmod 755 /ml
