@@ -24,6 +24,10 @@ RUN pip3 install seaborn
 RUN pip3 install pyyaml
 RUN pip3 install http://www.nltk.org/nltk3-alpha/nltk-3.0a4.tar.gz#egg=nlt
 RUN python3 -m nltk.downloader all
+RUN pip3 install patsy 
+RUN pip3 install git+git://github.com/statsmodels/statsmodels
+RUN pip3 install husl
+RUN pip3 install ggplot
 
 #make sure we use the same zmq version as the system provides
 RUN rm -rf /usr/local/lib/python*/dist-packages/zmq
