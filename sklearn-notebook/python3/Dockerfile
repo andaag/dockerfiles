@@ -28,6 +28,7 @@ RUN pip3 install patsy
 RUN pip3 install git+git://github.com/statsmodels/statsmodels
 RUN pip3 install husl
 RUN pip3 install ggplot
+RUN pip3 install gensim
 
 #make sure we use the same zmq version as the system provides
 RUN rm -rf /usr/local/lib/python*/dist-packages/zmq
