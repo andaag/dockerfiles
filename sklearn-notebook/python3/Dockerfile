@@ -9,8 +9,8 @@ RUN apt-get upgrade -y
 
 RUN mkdir /ml
 RUN locale-gen en_US en_US.UTF-8
-RUN apt-get -y install  libopenblas-base libopenblas-dev liblapack-dev gfortran wget libyaml-dev && apt-get clean -y
-RUN apt-get -y install ttf-bitstream-vera python3-zmq python3-pandas python3-pip cython3 python3-matplotlib && apt-get clean -y
+RUN apt-get -y install  libopenblas-base libopenblas-dev liblapack-dev gfortran wget libyaml-dev libfreetype6-dev libpng-dev && apt-get clean -y
+RUN apt-get -y install ttf-bitstream-vera python3-zmq python3-pandas python3-pip cython3 && apt-get clean -y
 RUN apt-get -y install libzmq3-dev libzmq3 git-core && apt-get clean -y
 RUN pip3 install --upgrade ipython[all]
 RUN pip3 install mechanize
@@ -18,6 +18,7 @@ RUN pip3 install numexpr
 RUN pip3 install bottleneck
 RUN pip3 install --upgrade numpy
 RUN pip3 install --upgrade scipy
+RUN pip3 install --upgrade matplotlib
 RUN pip3 install --upgrade pandas
 RUN pip3 install --upgrade git+git://github.com/scikit-learn/scikit-learn.git@0.15.X
 RUN pip3 install seaborn
