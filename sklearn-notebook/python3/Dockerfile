@@ -4,12 +4,12 @@
 # docker run -v $(pwd)/ml:/ml -t andaag/sklearn-notebook3
 
 FROM ubuntu:14.04
-RUN apt-get update
-RUN apt-get upgrade -y
+RUN apt-get update #redo1
+RUN apt-get upgrade -y && apt-get clean -y
 
 RUN mkdir /ml
 RUN locale-gen en_US en_US.UTF-8
-RUN apt-get -y install  libopenblas-base libopenblas-dev liblapack-dev gfortran wget libyaml-dev libfreetype6-dev libpng-dev && apt-get clean -y
+RUN apt-get -y install libopenblas-base libopenblas-dev liblapack-dev gfortran wget libyaml-dev libfreetype6-dev libpng-dev && apt-get clean -y
 RUN apt-get -y install ttf-bitstream-vera python3-zmq python3-pandas python3-pip cython3 && apt-get clean -y
 RUN apt-get -y install libzmq3-dev libzmq3 git-core && apt-get clean -y
 RUN pip3 install --upgrade ipython[all]
@@ -30,6 +30,8 @@ RUN pip3 install git+git://github.com/statsmodels/statsmodels
 RUN pip3 install husl
 RUN pip3 install ggplot
 RUN pip3 install gensim
+RUN apt-get install -y libgeos-dev && cd /usr/lib && ln -s libgeos-3.4.2.so libgeos.so && ln -s libgeos-3.4.2.so libgeos.so.1
+RUN pip3 install basemap --allow-external basemap  --allow-unverified basemap
 
 #make sure we use the same zmq version as the system provides
 RUN rm -rf /usr/local/lib/python*/dist-packages/zmq
@@ -39,4 +41,5 @@ WORKDIR /ml
 
 EXPOSE 8888
 CMD ipython notebook --no-browser --script --ip=$(hostname -i) --port 8888
+
 
