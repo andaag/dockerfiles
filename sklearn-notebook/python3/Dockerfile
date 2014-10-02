@@ -4,7 +4,7 @@
 # docker run -v $(pwd)/ml:/ml -t andaag/sklearn-notebook3
 
 FROM ubuntu:14.04
-RUN apt-get update #redo1
+RUN apt-get update #redo2
 RUN apt-get upgrade -y && apt-get clean -y
 
 RUN mkdir /ml
