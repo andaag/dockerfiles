@@ -4,7 +4,7 @@
 # docker run -v $(pwd)/ml:/ml -t andaag/sklearn-notebook3
 
 FROM ubuntu:14.04
-RUN apt-get update #redo2
+RUN apt-get update #redo3
 RUN apt-get upgrade -y && apt-get clean -y
 
 RUN mkdir /ml
@@ -16,9 +16,10 @@ RUN apt-get -y install libopenblas-base libopenblas-dev liblapack-dev && apt-get
 RUN update-alternatives  --set libblas.so.3 /usr/lib/openblas-base/libblas.so.3
 RUN update-alternatives --set liblapack.so.3 /usr/lib/lapack/liblapack.so.3
 
-RUN apt-get -y install gfortran wget libyaml-dev libfreetype6-dev libpng-dev pkg-config && apt-get clean -y
-RUN apt-get -y install ttf-bitstream-vera python3-zmq python3-pip cython3 && apt-get clean -y
+RUN apt-get -y install build-essential gfortran wget libyaml-dev libfreetype6-dev libpng-dev pkg-config && apt-get clean -y
+RUN apt-get -y install ttf-bitstream-vera python3-zmq cython3 && apt-get clean -y
 RUN apt-get -y install libzmq3-dev libzmq3 git-core && apt-get clean -y
+RUN wget https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py
 RUN pip3 install --upgrade ipython[all]
 RUN pip3 install --upgrade numpy
 RUN pip3 install numexpr
@@ -29,7 +30,8 @@ RUN pip3 install --upgrade pandas
 RUN pip3 install --upgrade git+git://github.com/scikit-learn/scikit-learn.git@0.15.X
 RUN pip3 install seaborn
 RUN pip3 install pyyaml
-RUN pip3 install http://www.nltk.org/nltk3-alpha/nltk-3.0a4.tar.gz#egg=nlt
+#RUN pip3 install http://www.nltk.org/nltk3-alpha/nltk-3.0a4.tar.gz#egg=nlt
+RUN pip3 install nltk
 RUN python3 -m nltk.downloader all
 RUN pip3 install patsy 
 RUN pip3 install git+git://github.com/statsmodels/statsmodels
