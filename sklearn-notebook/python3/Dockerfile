@@ -20,7 +20,6 @@ RUN apt-get -y install gfortran wget libyaml-dev libfreetype6-dev libpng-dev pkg
 RUN apt-get -y install ttf-bitstream-vera python3-zmq python3-pip cython3 && apt-get clean -y
 RUN apt-get -y install libzmq3-dev libzmq3 git-core && apt-get clean -y
 RUN pip3 install --upgrade ipython[all]
-RUN pip3 install mechanize
 RUN pip3 install --upgrade numpy
 RUN pip3 install numexpr
 RUN pip3 install bottleneck
