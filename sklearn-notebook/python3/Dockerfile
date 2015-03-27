@@ -42,4 +42,5 @@ VOLUME /ml
 WORKDIR /ml
 
 EXPOSE 8888
+ENV PYTHONUNBUFFERED=1
 CMD ipython notebook --no-browser --script --ip=0.0.0.0 --port 8888
