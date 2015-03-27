@@ -7,7 +7,7 @@ FROM ubuntu:14.04
 RUN apt-get update
 RUN apt-get upgrade -y && apt-get clean -y
 
-RUN mkdir /ml
+RUN mkdir /ml && chmod 755 /ml
 RUN locale-gen en_US en_US.UTF-8
 
 RUN apt-get -y remove libatlas3gf-base libatlas-dev
@@ -32,15 +32,13 @@ RUN pip3 install nltk
 RUN python3 -m nltk.downloader all
 RUN pip3 install git+git://github.com/statsmodels/statsmodels
 RUN pip3 install gensim
+RUN pip3 install objgraph
 
 #make sure we use the same zmq version as the system provides
 RUN rm -rf /usr/local/lib/python*/dist-packages/zmq
-RUN chmod 755 /ml
 
 VOLUME /ml
 WORKDIR /ml
 
 EXPOSE 8888
 CMD ipython notebook --no-browser --script --ip=0.0.0.0 --port 8888
-
-
