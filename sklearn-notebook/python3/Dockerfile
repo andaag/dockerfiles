@@ -33,6 +33,7 @@ RUN pip3 install nltk
 RUN python3 -m nltk.downloader all
 RUN pip3 install git+git://github.com/statsmodels/statsmodels
 RUN pip3 install gensim
+RUN pip3 install seaborn
 RUN pip3 install --upgrade git+git://github.com/scikit-learn/scikit-learn.git@0.16.X
 
 #make sure we use the same zmq version as the system provides
