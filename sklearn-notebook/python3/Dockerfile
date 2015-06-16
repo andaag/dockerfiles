@@ -4,6 +4,7 @@
 # docker run -v $(pwd)/ml:/ml -t andaag/sklearn-notebook3
 
 FROM ubuntu:14.04
+ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
 RUN apt-get upgrade -y && apt-get clean -y
 
