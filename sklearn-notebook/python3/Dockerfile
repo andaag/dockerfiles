@@ -28,14 +28,9 @@ RUN pip3 install bottleneck #performance
 RUN pip3 install --upgrade scipy
 RUN pip3 install --upgrade matplotlib
 RUN pip3 install --upgrade pandas
-RUN pip3 install objgraph
-RUN pip3 install memory_profiler
-RUN pip3 install nltk
-RUN python3 -m nltk.downloader all
 RUN pip3 install git+git://github.com/statsmodels/statsmodels
 RUN pip3 install seaborn
 RUN pip3 install --upgrade git+git://github.com/scikit-learn/scikit-learn.git@0.16.X
-#RUN pip3 install gensim
 
 #make sure we use the same zmq version as the system provides
 RUN rm -rf /usr/local/lib/python*/dist-packages/zmq
