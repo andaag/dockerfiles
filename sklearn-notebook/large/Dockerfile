@@ -15,7 +15,8 @@ RUN pip3 install nltk
 RUN python3 -m nltk.downloader all
 RUN pip3 install objgraph
 RUN pip3 install memory_profiler
-
+RUN pip3 install blaze
+RUN pip3 install git+https://github.com/andaag/scikit_helpers
 #RUN pip3 install gensim
 
 #make sure we use the same zmq version as the system provides
