@@ -1,7 +1,7 @@
 # Usage:
-# docker build -t andaag/sklearn-notebook3 .
+# docker build -t andaag/sklearn_notebook3 .
 # mkdir ml
-# docker run -v $(pwd)/ml:/ml -t andaag/sklearn-notebook3
+# docker run -v $(pwd)/ml:/ml -t andaag/sklearn_notebook3
 
 FROM ubuntu:14.04
 ENV DEBIAN_FRONTEND noninteractive
@@ -17,23 +17,22 @@ RUN apt-get -y install libopenblas-base libopenblas-dev liblapack-dev && apt-get
 RUN update-alternatives  --set libblas.so.3 /usr/lib/openblas-base/libblas.so.3
 RUN update-alternatives --set liblapack.so.3 /usr/lib/lapack/liblapack.so.3
 
-RUN apt-get -y install build-essential gfortran wget libyaml-dev libfreetype6-dev libpng-dev pkg-config && apt-get clean -y
-RUN apt-get -y install ttf-bitstream-vera python3-zmq cython3 && apt-get clean -y
-RUN apt-get -y install libzmq3-dev libzmq3 git-core && apt-get clean -y
+RUN apt-get -y install build-essential gfortran wget libyaml-dev libfreetype6-dev libpng-dev pkg-config lib32ncurses5-dev && apt-get clean -y
+RUN apt-get -y install ttf-bitstream-vera git-core && apt-get clean -y
+RUN apt-get -y install python3.4-dev && apt-get clean -y
 RUN wget https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py
-RUN pip3 install --upgrade ipython[all]
-RUN pip3 install --upgrade numpy
-RUN pip3 install numexpr #performance
-RUN pip3 install bottleneck #performance
-RUN pip3 install --upgrade scipy
-RUN pip3 install --upgrade matplotlib
-RUN pip3 install --upgrade pandas
-RUN pip3 install git+git://github.com/statsmodels/statsmodels
-RUN pip3 install seaborn
-RUN pip3 install --upgrade git+git://github.com/scikit-learn/scikit-learn.git@0.16.X
 
-#make sure we use the same zmq version as the system provides
-RUN rm -rf /usr/local/lib/python*/dist-packages/zmq
+RUN pip3 install cython && rm -rf /root/.cache
+RUN pip3 install ipython[all] && rm -rf /root/.cache
+RUN pip3 install numpy && rm -rf /root/.cache
+RUN pip3 install numexpr && rm -rf /root/.cache #performance
+RUN pip3 install bottleneck && rm -rf /root/.cache #performance
+RUN pip3 install scipy && rm -rf /root/.cache
+RUN pip3 install matplotlib && rm -rf /root/.cache
+RUN pip3 install pandas && rm -rf /root/.cache
+RUN pip3 install git+git://github.com/statsmodels/statsmodels && rm -rf /root/.cache
+RUN pip3 install seaborn && rm -rf /root/.cache
+RUN pip3 install git+git://github.com/scikit-learn/scikit-learn.git@0.16.X && rm -rf /root/.cache
 
 VOLUME /ml
 WORKDIR /ml
