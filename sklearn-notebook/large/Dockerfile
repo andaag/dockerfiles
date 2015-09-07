@@ -14,13 +14,18 @@ RUN python3 -m nltk.downloader all && mv /root/nltk_data /usr/share/nltk_data
 RUN pip3 install objgraph && rm -rf /root/.cache
 RUN pip3 install memory_profiler && rm -rf /root/.cache
 RUN pip3 install blaze && rm -rf /root/.cache
-RUN pip3 install git+https://github.com/andaag/scikit_helpers && rm -rf /root/.cache
+RUN pip3 install git+https://github.com/andaag/scikit_helpers && rm -rf /root/.cache 
 RUN pip3 install dask[complete] && rm -rf /root/.cache
+# python 2.x only .. RUN pip3 install graphlab-create
 
 #RUN pip3 install gensim && rm -rf /root/.cache
 
 #RUN pip3 install spacy && rm -rf /root/.cache
 #RUN python3 -m spacy.en.download
+
+RUN pip3 install pyyaml && git clone --depth=1 https://github.com/ipython-contrib/IPython-notebook-extensions.git && \
+	cd IPython-notebook-extensions && ipython3 setup.py install && rm -rf /root/IPython-notebook-extensions
+
 
 VOLUME /ml
 WORKDIR /ml
