@@ -16,6 +16,7 @@ RUN pip3 install memory_profiler && rm -rf /root/.cache
 RUN pip3 install blaze && rm -rf /root/.cache
 RUN pip3 install git+https://github.com/andaag/scikit_helpers && rm -rf /root/.cache 
 RUN pip3 install dask[complete] && rm -rf /root/.cache
+RUN pip3 install pyodbc
 # python 2.x only .. RUN pip3 install graphlab-create
 
 #RUN pip3 install gensim && rm -rf /root/.cache
