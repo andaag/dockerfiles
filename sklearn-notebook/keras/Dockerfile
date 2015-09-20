@@ -6,10 +6,12 @@ FROM andaag/large_notebook3
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get -y install build-essential python3-dev libev4 libev-dev
 
-ADD cuda-repo-ubuntu1410_7.0-28_amd64.deb /tmp/cuda.deb
-RUN dpkg -i /tmp/cuda.deb
+RUN apt-get -y install software-properties-common && add-apt-repository -y ppa:graphics-drivers/ppa
+RUN echo deb http://archive.ubuntu.com/ubuntu/ vivid multiverse | tee /etc/apt/sources.list.d/multiverse.list
+RUN echo deb http://archive.ubuntu.com/ubuntu/ vivid-security multiverse | tee /etc/apt/sources.list.d/multiverse2.list
+RUN echo deb http://no.archive.ubuntu.com/ubuntu/ vivid-updates multiverse | tee /etc/apt/sources.list.d/multiverse3.list
 RUN apt-get update
-RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y cuda
+RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y libcuda1-355 nvidia-cuda-dev
 
 ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/cuda/lib64
 ENV PATH $PATH:/usr/local/cuda/bin
@@ -21,9 +23,6 @@ RUN pip3 install h5py
 RUN pip3 install git+https://github.com/fchollet/keras
 
 ENV THEANO_FLAGS mode=FAST_RUN,device=gpu,floatX=float32
-
-#make sure we use the same zmq version as the system provides
-RUN rm -rf /usr/local/lib/python*/dist-packages/zmq
 
 VOLUME /ml
 WORKDIR /ml

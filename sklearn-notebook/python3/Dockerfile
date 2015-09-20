@@ -3,7 +3,7 @@
 # mkdir ml
 # docker run -v $(pwd)/ml:/ml -t andaag/sklearn_notebook3
 
-FROM ubuntu:14.04
+FROM ubuntu:15.04
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
 RUN apt-get upgrade -y && apt-get clean -y
@@ -19,10 +19,11 @@ RUN update-alternatives --set liblapack.so.3 /usr/lib/lapack/liblapack.so.3
 
 RUN apt-get -y install build-essential gfortran wget libyaml-dev libfreetype6-dev libpng-dev pkg-config lib32ncurses5-dev && apt-get clean -y
 RUN apt-get -y install ttf-bitstream-vera git-core && apt-get clean -y
-RUN apt-get -y install python3.4-dev && apt-get clean -y
-RUN wget https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py
+RUN apt-get -y install python3.4-dev && apt-get clean -y && ln -s /usr/bin/python3.4 /usr/bin/python3
+RUN wget https://bootstrap.pypa.io/get-pip.py && LC_ALL=C python3 get-pip.py
 
 RUN pip3 install cython && rm -rf /root/.cache
+RUN pip3 install pyreadline==2.0 && rm -rf /root/.cache
 RUN pip3 install ipython[all] && rm -rf /root/.cache
 RUN pip3 install numpy && rm -rf /root/.cache
 RUN pip3 install numexpr && rm -rf /root/.cache #performance
