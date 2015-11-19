@@ -33,7 +33,7 @@ RUN pip3 install matplotlib && rm -rf /root/.cache
 RUN pip3 install pandas && rm -rf /root/.cache
 RUN pip3 install git+git://github.com/statsmodels/statsmodels && rm -rf /root/.cache
 RUN pip3 install seaborn && rm -rf /root/.cache
-RUN pip3 install git+git://github.com/scikit-learn/scikit-learn.git@0.16.X && rm -rf /root/.cache
+RUN pip3 install git+git://github.com/scikit-learn/scikit-learn.git@0.17.X && rm -rf /root/.cache
 RUN apt-get -y install sudo
 
 VOLUME /ml
