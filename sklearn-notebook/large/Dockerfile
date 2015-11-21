@@ -16,12 +16,10 @@ RUN pip3 install memory_profiler && rm -rf /root/.cache
 RUN pip3 install blaze && rm -rf /root/.cache
 RUN pip3 install git+https://github.com/andaag/scikit_helpers && rm -rf /root/.cache 
 RUN pip3 install dask[complete] && rm -rf /root/.cache
-RUN apt-get install -y unixodbc unixodbc-bin unixodbc-dev libstdc++5 && pip3 install pyodbc
-RUN pip3 install sqlanydb
 # python 2.x only .. RUN pip3 install graphlab-create
 
-RUN pip3 install textblob
-RUN python3 -m textblob.download_corpora
+#RUN pip3 install textblob
+#RUN python3 -m textblob.download_corpora
 
 #RUN pip3 install gensim && rm -rf /root/.cache
 
