@@ -21,7 +21,7 @@ RUN pip3 install dask[complete] && rm -rf /root/.cache
 #RUN pip3 install textblob
 #RUN python3 -m textblob.download_corpora
 
-#RUN pip3 install gensim && rm -rf /root/.cache
+RUN LC_ALL=en_US.utf-8 pip3 install gensim && rm -rf /root/.cache
 
 #RUN pip3 install spacy && rm -rf /root/.cache
 #RUN python3 -m spacy.en.download
