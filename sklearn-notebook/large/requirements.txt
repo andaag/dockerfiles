@@ -1,0 +1,5 @@
+git+https://github.com/andaag/scikit_helpers
+xgboost==0.4a29
+nltk==3.1
+seaborn==0.6.0
+gensim==0.12.3
