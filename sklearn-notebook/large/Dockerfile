@@ -19,5 +19,5 @@ VOLUME /ml
 WORKDIR /ml
 
 EXPOSE 8888
-CMD ipython notebook --no-browser --script --ip=0.0.0.0 --port 8888
+CMD jupyter notebook --no-browser --script --ip=0.0.0.0 --port 8888
 
