@@ -4,6 +4,14 @@ my personal docker files. Scikit learn++ containers + some cuda stuff.
 
 https://hub.docker.com/u/andaag/
 
+
+### Starting the large container:
+```
+docker run -v /directory/with/your/files:/ml -p 8888:8888 -ti andaag/large_notebook3
+```
+For more advanced startup see https://github.com/andaag/dockerfiles/blob/master/sklearn-notebook/pynotebook.sh
+
+
 ### Currently built on docker hub:
 
 ```
