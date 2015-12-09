@@ -32,5 +32,5 @@ Vagrant.configure("2") do |config|
     destination: "/tmp"
 
   config.vm.provision :docker,
-    images: ["andaag/sklearn-notebook", "andaag/sklearn-notebook-neural" ]
+    images: ["andaag/sklearn-notebook3", "andaag/large-notebook3" ]
 end

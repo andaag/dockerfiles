@@ -1,0 +1,5 @@
+#requires license (can be downloaded as addon freely from anaconda cloud - free for 4 nodes)
+license_mkl_1449574630.txt
+
+#requires license (cudnn, free signup)
+cudnn-7.0-linux-x64-v3.0-prod.tgz
