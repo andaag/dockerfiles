@@ -20,11 +20,13 @@ fi
 VOLUMES="-v $HOME/src/ml:/ml -v $HOME/src/ml/nltk/tmp:/nltk_data"
 ENV="-e JUPYTER_ARGS=\"--script\" -e AWS_ACCESS_KEY=\"$AWS_ACCESS_KEY\" -e AWS_SECRET_KEY=\"$AWS_SECRET_KEY\""
 
-TARGET_PORT="9999"
-if echo $IMAGE | grep -q 3; then
-	TARGET_PORT="8888"
+
+
+TARGET_PORT="8888"
+if docker ps  | egrep -q '\->8888/'; then
+	echo "Single container already running on 8888, starting this on 9999"
+	TARGET_PORT="9999"
 fi
-echo "Opening on port $TARGET_PORT"
 CMD="docker run --rm=true $VOLUMES $NVIDIA_ARGS --name=ml $ENV -p 127.0.0.1:$TARGET_PORT:8888 -ti $IMAGE"
 
 echo ""
