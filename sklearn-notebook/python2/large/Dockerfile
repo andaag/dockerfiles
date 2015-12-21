@@ -2,7 +2,7 @@
 
 # docker build -t andaag/large_notebook2 .
 
-FROM andaag/sklearn_notebook2
+FROM andaag/sklearn_notebook2 
 ENV DEBIAN_FRONTEND noninteractive
 ENV LC_ALL en_US.utf-8
 
@@ -16,8 +16,8 @@ RUN pip install git+https://github.com/andaag/scikit_helpers
 RUN apt-get update && apt-get -y install build-essential && pip install xgboost==0.4a29 && apt-get remove -y build-essential && apt-get -y autoremove && apt-get clean  -y
 RUN conda upgrade --all -y
 
-RUN groupadd ml && useradd ml -m -g ml -u 1000
-ADD start.sh /home/ml/
+RUN groupadd ml && useradd ml -m -g ml -u 1000 
+ADD start.sh /home/ml/ 
 
 RUN sudo -s -H -u ml -- env PATH="/opt/miniconda/bin:$PATH" jupyter notebook --generate-config
 RUN sed -i \
@@ -38,3 +38,4 @@ WORKDIR /ml
 
 EXPOSE 8888
 CMD chown ml:ml /ml /nltk_data && sudo -s -E -H -u ml -- env PATH="/opt/miniconda/bin:$PATH" bash /home/ml/start.sh
+
