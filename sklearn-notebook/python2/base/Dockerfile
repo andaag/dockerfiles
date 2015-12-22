@@ -10,6 +10,8 @@ ENV PATH=/opt/conda/bin:${PATH}
 ENV JOBLIB_TEMP_FOLDER /tmp
 
 RUN mkdir /ml && chmod 755 /ml
+COPY install.sh /tmp/install.sh
+COPY req.txt /tmp/req.txt
 RUN cd /tmp && bash install.sh 2 && rm /tmp/*
 
 VOLUME /ml
