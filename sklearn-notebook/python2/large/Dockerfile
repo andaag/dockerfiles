@@ -10,7 +10,7 @@ RUN mkdir /root/.ssh /nltk_data && ln -s /nltk_data /usr/share/nltk_data
 RUN ssh-keyscan -t rsa github.com > /root/.ssh/known_hosts
 
 RUN apt-get install -y sudo && apt-get clean -y
-RUN conda install -y nltk seaborn gensim ipywidgets
+RUN conda install -y nltk seaborn gensim ipywidgets boto
 RUN pip install ggplot
 RUN pip install git+https://github.com/andaag/scikit_helpers
 RUN apt-get update && apt-get -y install build-essential && pip install xgboost==0.4a29 && apt-get remove -y build-essential && apt-get -y autoremove && apt-get clean  -y
