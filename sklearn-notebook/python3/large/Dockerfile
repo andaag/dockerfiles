@@ -28,8 +28,9 @@ RUN sed -i \
         -e "s/^# c.IPKernelApp.extensions = \[\]$/c.IPKernelApp.extensions = ['']/" \
         /home/ml/.jupyter/jupyter_notebook_config.py
 
-RUN mkdir -p /home/ml/.config/matplotlib/
+RUN mkdir -p /home/ml/.config/matplotlib/ /root/.config/matplotlib
 RUN echo "backend      : agg" > /home/ml/.config/matplotlib/matplotlibrc
+RUN echo "backend      : agg" > /root/.config/matplotlib/matplotlibrc
 RUN chown ml:ml -R /home/ml/
 
 VOLUME /ml

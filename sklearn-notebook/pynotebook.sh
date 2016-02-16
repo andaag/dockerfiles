@@ -2,7 +2,7 @@
 
 #My personal script to start my docker containers
 
-IMAGE="large_notebook3_mkl"
+IMAGE="large_notebook3"
 if [ ! -z "$1" ]; then
     IMAGE="$1"
 fi
