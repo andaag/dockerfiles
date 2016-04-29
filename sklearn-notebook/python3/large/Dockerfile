@@ -15,6 +15,8 @@ RUN pip install ggplot
 RUN pip install git+https://github.com/andaag/scikit_helpers
 RUN apt-get update && apt-get -y install build-essential && pip install xgboost==0.4a29 && apt-get remove -y build-essential && apt-get -y autoremove && apt-get clean  -y
 RUN conda upgrade --all -y
+ #latest was broken..
+RUN conda install numpy==1.10.4 -y
 
 RUN groupadd ml && useradd ml -m -g ml -u 1000 
 ADD start.sh /home/ml/ 

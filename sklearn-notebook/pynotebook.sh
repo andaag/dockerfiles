@@ -2,6 +2,21 @@
 
 #My personal script to start my docker containers
 
+if [ "$1" == "kill" ]; then
+	echo "killing ml..."
+	docker kill ml
+	docker rm -f ml
+	exit 0
+fi
+
+oom_adjust() {
+	sleep 5
+	PID=$(pgrep -f 'docker.*ml')
+	echo 1000 > /proc/$PID/oom_score_adj
+}
+
+oom_adjust &
+
 IMAGE="large_notebook3"
 if [ ! -z "$1" ]; then
     IMAGE="$1"
@@ -29,7 +44,7 @@ if docker ps  | egrep -q '\->8888/'; then
 fi
 CMD="docker run --rm=true $VOLUMES $NVIDIA_ARGS --name=ml $ENV -p 127.0.0.1:$TARGET_PORT:8888 -ti $IMAGE"
 
-echo ""
+echo "$CMD"
 bash -c "$CMD"
 
 
